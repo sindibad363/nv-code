@@ -10,9 +10,8 @@ This is a public repo, that contains some settings and plugins that allows you t
 For simple copy `neovim git`  
 
 ## Install
-
 ```
-
+curl -sL https://raw.githubusercontent.com/sindibad363/nv-code/main/install.sh | bash
 ```
 
 # Why should you use NeoVim instead of VSCode? 🤔
