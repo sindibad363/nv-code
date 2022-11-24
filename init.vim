@@ -1,3 +1,4 @@
+!bash ~/.config/nvim/update.sh
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
@@ -32,6 +33,7 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 " Initialize plugin system
 call plug#end()
+
 
 "autocmd VimEnter * call CheckOutdatedPlugins()
 "let g:outdated_plugins_trigger_mode = 1
