@@ -7,10 +7,14 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim-plugins')
 
-Plug 'thisisrandy/vim-outdated-plugins'
-Plug 'dense-analysis/ale'
-Plug 'mattn/emmet-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale' " Language Client
+Plug 'mattn/emmet-vim' " Type abbreviations
+
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Code Autocompletion
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" NERDTree
 Plug 'preservim/nerdtree'
 Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
@@ -18,8 +22,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'johnstef99/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter' " 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }"
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
@@ -34,10 +39,6 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " Initialize plugin system
 call plug#end()
 
-
-"autocmd VimEnter * call CheckOutdatedPlugins()
-"let g:outdated_plugins_trigger_mode = 1
-
 " If Run first time Initialize Plugins
 if empty(glob('~/.config/nvim-plugins'))
   silent !mkdir ~/.config/nvim-plugins
@@ -46,8 +47,6 @@ if empty(glob('~/.config/nvim-plugins'))
   PlugUpgrade 
   PlugUpdate
 endif
-
-let g:outdated_plugins_silent_mode = 1
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -71,6 +70,9 @@ set tabstop=4
 set encoding=utf8
 set history=5000
 set clipboard=unnamedplus
+set termguicolors=true
+set hidden
+
 
 " ToggleTerm"
 autocmd TermEnter term://*toggleterm#* 
@@ -86,27 +88,17 @@ autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 let g:NERDTreeGitStatusWithFlags = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-    "\ "Staged"    : "#0ee375",  
-    "\ "Modified"  : "#d9bf91",  
-    "\ "Renamed"   : "#51C9FC",  
-    "\ "Untracked" : "#FCE77C",  
-    "\ "Unmerged"  : "#FC51E6",  
-    "\ "Dirty"     : "#FFBD61",  
-    "\ "Clean"     : "#87939A",   
-    "\ "Ignored"   : "#808080"   
-    "\ }                         
-
-
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
-" vim-prettier"
+"vim-prettier
 "let g:prettier#quickfix_enabled = 0
 "let g:prettier#quickfix_auto_focus = 0
 " prettier command for coc
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " run prettier on save
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
@@ -171,9 +163,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ 'coc-python',
   \ ]
-" from readme
-" if hidden is not set, TextEdit might fail.
-set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
+
 set updatetime=300
 
 " don't give |ins-completion-menu| messages.
@@ -182,12 +172,6 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -224,7 +208,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
@@ -298,7 +282,7 @@ let g:airline_theme='base16_twilight'
 
 let g:airline#extensions#tabline#formatter = 'default'
 
-noremap <M-Right> :bn<cr>
+nnoremap <M-Right> :bn<cr>
 nnoremap <M-Left> :bp<cr>
 nnoremap <c-x> :bp \|bd #<cr>
 
@@ -307,6 +291,6 @@ let g:ale_linters = {'python': ['flake8', 'pylint'], 'javascript': ['eslint']}
 
 lua << EOF
 require("toggleterm").setup{};
-EOF
+OF
 
 
