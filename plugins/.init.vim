@@ -52,8 +52,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 source  ~/.config/nvim/plugins/Airline.vim
 source  ~/.config/nvim/plugins/Ale.vim
-luafile ~/.config/nvim/plugins/BarBar.lua
-source  ~/.config/nvim/plugins/BarBar.vim
+"luafile ~/.config/nvim/plugins/BarBar.lua
+"source  ~/.config/nvim/plugins/BarBar.vim
 source  ~/.config/nvim/plugins/Coc.vim
 source  ~/.config/nvim/plugins/CtrlP.vim
 source  ~/.config/nvim/plugins/NERDCommenter.vim

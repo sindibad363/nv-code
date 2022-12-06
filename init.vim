@@ -10,6 +10,7 @@ set cursorline
 set expandtab
 set autoindent
 set smartindent
+set modifiable
 set shiftwidth=4
 set tabstop=4
 set encoding=utf8
