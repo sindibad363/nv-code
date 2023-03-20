@@ -15,7 +15,7 @@ require("plugins.ToggleTerm");
 require("plugins.Coc");
 require("plugins.NVimTree");
 require("plugins.LuaLine");
-
+require("plugins.Comment");
 
 vim.cmd [[colorscheme moonfly]]
 nmap('<C-f>', ':NvimTreeToggle<CR>');

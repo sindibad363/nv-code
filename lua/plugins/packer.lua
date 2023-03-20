@@ -33,5 +33,9 @@ require('packer').startup(function(use)
   }
 
   use { "bluz71/vim-moonfly-colors", as = "moonfly" }
+
+  use { 'numToStr/Comment.nvim',
+--    config = function() require('Comment').setup() end
+  }
 end);
 
