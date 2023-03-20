@@ -19,5 +19,4 @@ require("plugins.Comment");
 
 vim.cmd [[colorscheme moonfly]]
 nmap('<C-f>', ':NvimTreeToggle<CR>');
-nmap('<S-n>', ':bnext<CR>');
-nmap('<S-m>', ':bprev<CR>');
+nmap('<S-Tab>', ':bnext<CR>');
