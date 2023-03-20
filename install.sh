@@ -8,7 +8,7 @@ case $autoupdates in
     "y"|"Y")
         exit 0;;
     "n"|"N")
-        sed 's|!bash ~/.config/nvim/update.sh|#!bash ~/.config/nvim/update.sh|' ~/.config/nvim/init.vim
+        sed 's|!bash ~/.config/nvim/update.sh|#!bash ~/.config/nvim/update.sh|' ~/.config/nvim/init.vim ;;
     *)
     exit 0;;
 esac

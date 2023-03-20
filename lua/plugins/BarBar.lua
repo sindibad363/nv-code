@@ -1,10 +1,10 @@
 -- Set barbar's options
 require'bufferline'.setup {
   -- Enable/disable animations
-  animation = true,
+  animation = false,
 
   -- Enable/disable auto-hiding the tab bar when there is a single buffer
-  auto_hide = false,
+  auto_hide = true,
 
   -- Enable/disable current/total tabpages indicator (top right corner)
   tabpages = true,
@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   pattern = '*',
   callback = function()
     if vim.bo.filetype == 'NvimTree' then
-      require'bufferline.api'.set_offset(31, 'FileTree')
+      require'bufferline.api'.set_offset(30, 'FileTree')
     end
   end
 })

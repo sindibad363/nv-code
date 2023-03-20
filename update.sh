@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $(git -C $HOME/.config/nvim rev-parse HEAD) = $(git -C $HOME/.config/nvim ls-remote $(git -C $HOME/.config/nvim rev-parse --abbrev-ref @{u} | sed 's/\// /g') | cut -f1) ]; then
+if [ $(git -C $HOME/.config/nvim rev-parse HEAD) == $(git -C $HOME/.config/nvim ls-remote $(git -C $HOME/.config/nvim rev-parse --abbrev-ref @{u} | sed 's/\// /g') | cut -f1) ]; then
  echo up to date 
 else
  git -C $HOME/.config/nvim remote update
